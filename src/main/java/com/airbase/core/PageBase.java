@@ -10,9 +10,10 @@ import java.time.Duration;
 import java.util.List;
 
 public class PageBase {
-    public static final int MAX_TIMEOUT = 10;
+
+    private static final int MAX_TIMEOUT = 10;
     protected WebDriver driver;
-    WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public PageBase(WebDriver driver) {
         this.driver = driver;
