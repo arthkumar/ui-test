@@ -7,29 +7,18 @@ import com.airbase.page.ProductDetailPage;
 import com.airbase.page.ProductListingPage;
 import dataprovider.AirbaseDataProvider;
 import dev.failsafe.Failsafe;
-import dev.failsafe.RetryPolicy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 import static com.airbase.appdata.constants.Route.QA;
 
 public class AirbaseTests extends TestBase {
 
-    @Test(
-            dataProviderClass = AirbaseDataProvider.class,
-            dataProvider = "eCommerceTest"
-    )
+    @Test(dataProviderClass = AirbaseDataProvider.class, dataProvider = "eCommerceTest")
     public void testEcommerceAutomation(TestData testData) {
 
-        RetryPolicy<Object> retryPolicy = RetryPolicy.builder()
-                .handle(AssertionError.class)
-                .withDelay(Duration.ofSeconds(1))
-                .withMaxRetries(3)
-                .build();
-        HomePage homePage = new HomePage(driver);
-        Failsafe.with(retryPolicy).run(() -> {
+        HomePage homePage = new HomePage(getDriver());
+        Failsafe.with(getRetryPolicy()).run(() -> {
             homePage.navigateToHomePage(QA);
             boolean isPageTitleValid = homePage.getPageTitle().toLowerCase().contains(testData.getExpectedPageTitle().toLowerCase());
             Assert.assertTrue(isPageTitleValid);
