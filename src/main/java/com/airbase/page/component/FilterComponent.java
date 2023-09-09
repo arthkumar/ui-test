@@ -26,7 +26,7 @@ public class FilterComponent extends PageBase {
 
     public ProductListingPage selectBrandFilter(String brandFilter) {
         for (WebElement actualBrandFilter : brandFilters) {
-            if (actualBrandFilter.getText().toLowerCase().equalsIgnoreCase(brandFilter.toLowerCase())) {
+            if (actualBrandFilter.getText().equalsIgnoreCase(brandFilter.toLowerCase())) {
                 actualBrandFilter.click();
                 break;
             }

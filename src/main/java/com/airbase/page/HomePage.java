@@ -8,17 +8,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends PageBase {
+
     @FindBy(xpath = "//div[@class='a-box-inner']/div[1]/img")
     private WebElement captcha;
 
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        waitUntilPageIsLoaded();
     }
 
     public HomePage navigateToHomePage(String route){
         driver.get(route);
+        waitUntilPageIsLoaded();
         return this;
     }
 

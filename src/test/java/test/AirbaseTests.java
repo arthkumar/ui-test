@@ -17,7 +17,7 @@ public class AirbaseTests extends TestBase {
     @Test(dataProviderClass = AirbaseDataProvider.class, dataProvider = "eCommerceTest")
     public void testEcommerceAutomation(TestData testData) {
 
-        HomePage homePage = new HomePage(getDriver());
+        HomePage homePage = getHomePage();
         Failsafe.with(getRetryPolicy()).run(() -> {
             homePage.navigateToHomePage(QA);
             boolean isPageTitleValid = homePage.getPageTitle().toLowerCase().contains(testData.getExpectedPageTitle().toLowerCase());
