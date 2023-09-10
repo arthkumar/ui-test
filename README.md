@@ -33,3 +33,10 @@ Automate the use case listed below using a testing framework of your choice. Itâ
 airbase-ui-tests/target/surefire-reports/index.html
 ```
 
+- Please Note:
+  - For the sake of the assessment, I've tried to keep things simple and not over-engineer.
+  - This framework has been implemented using standard libraries:
+      - Written in a modular way. 
+      - Test reporting with surefire plugins. 
+      - Supporting 2 popular browsers. i.e. chrome and firefox
+  - Please feel free to add any review comments/feature request in case any modification is required.
